@@ -115,7 +115,7 @@ void ClassUDP::sendAudioChunk()
 {
     if (!audioFile.atEnd()) {
         QByteArray chunk = audioFile.read(chunkSize);
-        udpSocket->writeDatagram(chunk, classConfiguration->hostAddress, 4023);
+        udpSocket->writeDatagram(chunk, classConfiguration->hostAddress, 12345);
     } else {
         qDebug() << "Audio streaming finished.";
         audioFile.close();
@@ -125,5 +125,5 @@ void ClassUDP::sendAudioChunk()
 
 void ClassUDP::funcSendCommand(QByteArray data)
 {
-    udpSocket->writeDatagram(data, classConfiguration->hostAddress, 4023);
+    udpSocket->writeDatagram(data, classConfiguration->hostAddress, 12345);
 }

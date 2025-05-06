@@ -10,6 +10,7 @@ MainForm::MainForm(QObject *parent) : QObject(parent)
     setForm();
 }
 
+
 void MainForm::initPlainText()
 {
     packetView = new QPlainTextEdit();
@@ -56,4 +57,10 @@ void MainForm::setForm()
     QWidget* w =new QWidget();
     w->setLayout(hbl);
     w->show();
+}
+
+
+void MainForm::slotFillPlainTextEdit(QString text)
+{
+    packetView->appendPlainText(text);
 }

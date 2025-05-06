@@ -16,11 +16,9 @@ private:
     QGroupBox* grbTcp;
     QGroupBox* grbUdp;
 
-    QPushButton* btnUdpJson;
-    QPushButton* btnUdpAudioStream;
-    QPushButton* btnTcpPacket;
 
-    QPlainTextEdit* packetView;
+
+
 
     void initPlainText();
     void funcInitPushButton();
@@ -30,9 +28,19 @@ private:
     void setTcp();
     void setForm();
 public:
+    QPushButton* btnUdpJson;
+    QPushButton* btnUdpAudioStream;
+    QPushButton* btnTcpPacket;
+
+    QPlainTextEdit* packetView;
+
     explicit MainForm(QObject *parent = nullptr);
 
 signals:
+
+public slots:
+    void slotFillPlainTextEdit(QString text);
+
 
 };
 
