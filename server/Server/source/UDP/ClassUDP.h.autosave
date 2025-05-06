@@ -13,6 +13,8 @@ class ClassUDP : public QObject
 private:
     QUdpSocket* udpSocket;
     Configuration* classConfiguration;
+    ClassJSON* classJson;
+    
 
     void funcInitConfiguration();
     void funcInitUDPsocket();

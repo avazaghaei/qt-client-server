@@ -1,0 +1,24 @@
+#ifndef CLASSJSON_H
+#define CLASSJSON_H
+
+#include <QObject>
+#include <QJsonObject>
+#include <QJsonDocument>
+class ClassJSON : public QObject
+{
+    Q_OBJECT
+
+private:
+    QJsonObject* jsonObject;
+
+    void makeJsonObject();
+    void sendCommand();
+public:
+    static ClassJSON* getInstance();
+    explicit ClassJSON(QObject *parent = nullptr);
+
+signals:
+
+};
+
+#endif // CLASSJSON_H

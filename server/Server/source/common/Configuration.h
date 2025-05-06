@@ -16,9 +16,11 @@ public:
     explicit Configuration(QObject *parent = nullptr);
 
     int UDPport       = 1234;
-    int taskUDPdata   = 1;
-    int taskUDPstream = 2;
-    int taskTCPpacket = 3;
+
+    int stateUDPdata   = 1;
+    int stateUDPstream = 2;
+    int stateTCPpacket = 3;
+
 
 };
 
