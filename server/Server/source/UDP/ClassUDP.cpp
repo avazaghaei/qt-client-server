@@ -2,13 +2,19 @@
 
 ClassUDP::ClassUDP()
 {
+    funcInitConfiguration();
     funcInitUDPsocket();
+}
+
+void ClassUDP::funcInitConfiguration()
+{
+    classConfiguration = Configuration::getInstance();
 }
 
 void ClassUDP::funcInitUDPsocket()
 {
     udpSocket = new QUdpSocket(this);
-    udpSocket->bind(QHostAddress::LocalHost, 1234);
+    udpSocket->bind(QHostAddress::LocalHost, classConfiguration->UDPport);
     connect(udpSocket, &QUdpSocket::readyRead, this, &ClassUDP::funcReadyRead);
 }
 
@@ -23,7 +29,14 @@ void ClassUDP::funcReadyRead()
 
     udpSocket->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
 
-    qDebug()<< "message from: " << sender.toString();
-    qDebug()<< "message port: " << senderPort;
-    qDebug()<< "message: " << buffer;
+    int state = buffer.toInt();
+
+    if(state == classConfiguration->taskUDPdata)
+    {
+        qDebug()<<"1";
+    }
+    else if(state == classConfiguration->taskUDPstream)
+    {
+        qDebug()<<"2";
+    }
 }

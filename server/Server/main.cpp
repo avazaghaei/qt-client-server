@@ -1,10 +1,10 @@
 #include "MainClass.h"
-
+#include "source/UDP/ClassUDP.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainClass w;
+    ClassUDP w;
     return a.exec();
 }

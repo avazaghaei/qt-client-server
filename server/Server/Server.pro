@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     MainClass.cpp \
     main.cpp \
-    source/UDP/ClassUDP.cpp
+    source/UDP/ClassUDP.cpp \
+    source/common/Configuration.cpp
 
 HEADERS += \
     MainClass.h \
-    source/UDP/ClassUDP.h
+    source/UDP/ClassUDP.h \
+    source/common/Configuration.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

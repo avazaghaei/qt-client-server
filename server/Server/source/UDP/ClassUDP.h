@@ -4,13 +4,16 @@
 #include <QObject>
 #include <QUdpSocket>
 
+#include <source/common/Configuration.h>
 class ClassUDP : public QObject
 {
     Q_OBJECT
 
 private:
     QUdpSocket* udpSocket;
+    Configuration* classConfiguration;
 
+    void funcInitConfiguration();
     void funcInitUDPsocket();
 public:
     ClassUDP();
