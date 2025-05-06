@@ -266,12 +266,15 @@ Makefile: ..\Server\Server.pro C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\win32-m
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\yacc.prf \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\lex.prf \
 		..\Server\Server.pro \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Multimedia.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Widgets.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Gui.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Network.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Core.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\qtmain.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\build_pass.prf \
+		..\Server\audio.qrc \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Multimediad.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Widgetsd.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Guid.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Networkd.prl \
@@ -460,12 +463,15 @@ C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\exceptions.prf:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\yacc.prf:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\lex.prf:
 ..\Server\Server.pro:
+C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Multimedia.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Widgets.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Gui.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Network.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Core.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\qtmain.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\build_pass.prf:
+..\Server\audio.qrc:
+C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Multimediad.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Widgetsd.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Guid.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Networkd.prl:

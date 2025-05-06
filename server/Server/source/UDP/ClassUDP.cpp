@@ -5,6 +5,14 @@ ClassUDP::ClassUDP()
     funcInitClassConfiguration();
     funcInitUDPsocket();
     funcInitClassJson();
+    audioFile.setFileName(":/new/prefix1/source/UDP/sound.wav");
+    if (!audioFile.open(QIODevice::ReadOnly)) {
+        qDebug() << "Failed to open audio file.";
+    }
+
+    timer = new QTimer();
+    connect(timer, &QTimer::timeout, this, &ClassUDP::sendAudioChunk);
+    timer->start(20); // Adjust for smoother streaming
 }
 
 void ClassUDP::funcInitClassConfiguration()
@@ -42,7 +50,76 @@ void ClassUDP::funcReadyRead()
     }
     else if(state == classConfiguration->stateUdpStream)
     {
-        qDebug()<<"2";
+
+
+
+        audioFile.setFileName(":/new/prefix1/source/UDP/sound.wav");
+        if (!audioFile.open(QIODevice::ReadOnly)) {
+            qDebug() << "Failed to open audio file.";
+        }
+
+        timer = new QTimer();
+        connect(timer, &QTimer::timeout, this, &ClassUDP::sendAudioChunk);
+        timer->start(20); // Adjust for smoother streaming
+
+
+
+//        if (!audioFile.atEnd()) {
+//            QByteArray chunk = audioFile.read(chunkSize);
+//            udpSocket->writeDatagram(chunk, classConfiguration->hostAddress, 4023);
+//        } else {
+//            qDebug() << "Audio streaming finished.";
+//            audioFile.close();
+//        }
+
+
+
+
+
+
+
+
+
+//        QAudioFormat format;
+//        // Set audio format (adjust as needed)
+//        format.setSampleRate(44100);
+//        format.setChannelCount(1);
+//        format.setSampleSize(16);
+//        format.setCodec(".\sound.mp3");
+//        format.setByteOrder(QAudioFormat::LittleEndian);
+//        format.setSampleType(QAudioFormat::SignedInt);
+
+//        QAudioInput audioInput(format);
+//        QIODevice *inputDevice = audioInput.start();
+
+//        // Buffer to read audio data
+//        const int bufferSize = 1024;
+//        char buffer[bufferSize];
+
+//        while (true) {
+//            qint64 bytesRead = inputDevice->read(buffer, bufferSize);
+//            if (bytesRead > 0) {
+//                qint64 bytesWritten = udpSocket->writeDatagram(buffer, bytesRead, classConfiguration->hostAddress, 4023);
+//                if (bytesWritten == -1) {
+//                    qDebug() << "Error sending data:" << udpSocket->errorString();
+//                }
+//            }
+//        }
+//        audioInput.stop();
+
+//    }
+    }
+}
+
+void ClassUDP::sendAudioChunk()
+{
+    if (!audioFile.atEnd()) {
+        QByteArray chunk = audioFile.read(chunkSize);
+        udpSocket->writeDatagram(chunk, classConfiguration->hostAddress, 4023);
+    } else {
+        qDebug() << "Audio streaming finished.";
+        audioFile.close();
+        timer->stop();
     }
 }
 
