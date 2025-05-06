@@ -2,22 +2,27 @@
 
 ClassUDP::ClassUDP()
 {
-    funcInitConfiguration();
+    funcInitClassConfiguration();
     funcInitUDPsocket();
+    funcInitClassJson();
 }
 
-void ClassUDP::funcInitConfiguration()
+void ClassUDP::funcInitClassConfiguration()
 {
     classConfiguration = Configuration::getInstance();
+}
+
+void ClassUDP::funcInitClassJson()
+{
+    classJson = new ClassJSON();
 }
 
 void ClassUDP::funcInitUDPsocket()
 {
     udpSocket = new QUdpSocket(this);
-    udpSocket->bind(QHostAddress::LocalHost, classConfiguration->UDPport);
+    udpSocket->bind(QHostAddress::LocalHost, classConfiguration->UdpPort);
     connect(udpSocket, &QUdpSocket::readyRead, this, &ClassUDP::funcReadyRead);
 }
-
 
 void ClassUDP::funcReadyRead()
 {
@@ -31,12 +36,17 @@ void ClassUDP::funcReadyRead()
 
     int state = buffer.toInt();
 
-    if(state == classConfiguration->taskUDPdata)
+    if(state == classConfiguration->stateUdpData)
     {
-        qDebug()<<"1";
+        funcSendCommand(classJson->funcReadByteArray());
     }
-    else if(state == classConfiguration->taskUDPstream)
+    else if(state == classConfiguration->stateUdpStream)
     {
         qDebug()<<"2";
     }
+}
+
+void ClassUDP::funcSendCommand(QByteArray data)
+{
+    udpSocket->writeDatagram(data, classConfiguration->hostAddress, 4023);
 }

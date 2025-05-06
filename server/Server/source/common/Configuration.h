@@ -2,10 +2,7 @@
 #define CONFIGURATION_H
 
 #include <QObject>
-#include <QQueue>
-#include <QMutex>
-#include <QWaitCondition>
-#include <QVector>
+#include <QUdpSocket>
 
 class Configuration : public QObject
 {
@@ -15,11 +12,13 @@ public:
     static Configuration* getInstance();
     explicit Configuration(QObject *parent = nullptr);
 
-    int UDPport       = 1234;
+    int UdpPort       = 1234;
 
-    int stateUDPdata   = 1;
-    int stateUDPstream = 2;
-    int stateTCPpacket = 3;
+    int stateUdpData   = 1;
+    int stateUdpStream = 2;
+    int stateTcpPacket = 3;
+
+    QHostAddress hostAddress = QHostAddress::LocalHost;
 
 
 };

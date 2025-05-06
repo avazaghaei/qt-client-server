@@ -11,11 +11,14 @@ class ClassJSON : public QObject
 private:
     QJsonObject* jsonObject;
 
+    QByteArray byteArrayMessage;
+
+
     void makeJsonObject();
-    void sendCommand();
+    void converObjectToDocument();
 public:
-    static ClassJSON* getInstance();
     explicit ClassJSON(QObject *parent = nullptr);
+    QByteArray funcReadByteArray();
 
 signals:
 

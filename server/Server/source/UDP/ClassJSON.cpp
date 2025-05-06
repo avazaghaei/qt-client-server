@@ -1,25 +1,31 @@
 #include "ClassJSON.h"
 
-
-
 ClassJSON::ClassJSON(QObject *parent) : QObject(parent)
 {
+    jsonObject = new QJsonObject();
+    jsonObject->insert("field1", "value1");
+    jsonObject->insert("field2", "value2");
+}
 
+QByteArray ClassJSON::funcReadByteArray()
+{
+    makeJsonObject();
+    converObjectToDocument();
+    return byteArrayMessage;
 }
 
 void ClassJSON::makeJsonObject()
 {
-    jsonObject->insert("field1", "value1");
-    jsonObject->insert("field2", "value2");
-    {
-        int number;
-        int randomValue = qrand() % number;
-        jsonObject->insert("field3", randomValue);
-    }
+
+    int number;
+    int randomValue = qrand() % number;
+    jsonObject->insert("field3", randomValue);
 }
 
-void ClassJSON::sendCommand()
+void ClassJSON::converObjectToDocument()
 {
-    // Convert QJsonObject to QJsonDocument
-        QJsonDocument jsonDocument(jsonObject);
+    byteArrayMessage = QJsonDocument(*jsonObject).toJson();
 }
+
+
+
