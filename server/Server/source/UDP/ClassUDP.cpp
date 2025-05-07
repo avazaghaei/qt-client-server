@@ -5,14 +5,6 @@ ClassUDP::ClassUDP()
     funcInitClassConfiguration();
     funcInitUDPsocket();
     funcInitClassJson();
-    audioFile.setFileName(":/new/prefix1/source/UDP/sound.wav");
-    if (!audioFile.open(QIODevice::ReadOnly)) {
-        qDebug() << "Failed to open audio file.";
-    }
-
-    timer = new QTimer();
-    connect(timer, &QTimer::timeout, this, &ClassUDP::sendAudioChunk);
-    timer->start(20); // Adjust for smoother streaming
 }
 
 void ClassUDP::funcInitClassConfiguration()
@@ -58,9 +50,29 @@ void ClassUDP::funcReadyRead()
             qDebug() << "Failed to open audio file.";
         }
 
-        timer = new QTimer();
-        connect(timer, &QTimer::timeout, this, &ClassUDP::sendAudioChunk);
-        timer->start(20); // Adjust for smoother streaming
+
+//        audioFile.seek(44); // skip .wav header before streaming
+
+//        QFile testOut("out.raw");
+//        testOut.open(QIODevice::WriteOnly);
+//        audioFile.seek(44);  // skip header
+//        testOut.write(audioFile.readAll());
+//        testOut.close();
+
+        QTimer* timer = new QTimer(this);
+        connect(timer, &QTimer::timeout, this, [=]() mutable {
+            QByteArray chunk = audioFile.read(1024);
+            if (!chunk.isEmpty())
+                udpSocket->writeDatagram(chunk, QHostAddress("127.0.0.1"), 12345);
+            else
+            {
+                qDebug() << "Audio streaming finished.";
+                audioFile.close();
+                timer->stop();  // End of file
+            }
+
+        });
+        timer->start(3);  // Send every 20ms
 
 
 

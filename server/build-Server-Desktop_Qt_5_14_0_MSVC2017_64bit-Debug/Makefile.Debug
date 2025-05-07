@@ -74,7 +74,7 @@ OBJECTS       = debug\MainClass.obj \
 		debug\moc_ClassUDP.obj \
 		debug\moc_Configuration.obj
 
-DIST          = source/UDP/sound.wav ..\Server\MainClass.h \
+DIST          =  ..\Server\MainClass.h \
 		..\Server\source\UDP\ClassAudioStream.h \
 		..\Server\source\UDP\ClassJSON.h \
 		..\Server\source\UDP\ClassUDP.h \
@@ -550,6 +550,9 @@ debug\moc_ClassUDP.cpp: ..\Server\source\UDP\ClassUDP.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\QFile \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qfile.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qbasictimer.h \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\bin\moc.exe
 	C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/PhD/skills/Git/Qt/4_qt-client-server/source/server/build-Server-Desktop_Qt_5_14_0_MSVC2017_64bit-Debug/debug/moc_predefs.h -IC:/Qt/Qt5.14.0/5.14.0/msvc2017_64/mkspecs/win32-msvc -ID:/PhD/skills/Git/Qt/4_qt-client-server/source/server/Server -IC:/Qt/Qt5.14.0/5.14.0/msvc2017_64/include -IC:/Qt/Qt5.14.0/5.14.0/msvc2017_64/include/QtMultimedia -IC:/Qt/Qt5.14.0/5.14.0/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.14.0/5.14.0/msvc2017_64/include/QtGui -IC:/Qt/Qt5.14.0/5.14.0/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.14.0/5.14.0/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.14.0/5.14.0/msvc2017_64/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.39.33519\include" -I"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.39.33519\ATLMFC\include" -I"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\VS\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\um" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\shared" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\winrt" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" ..\Server\source\UDP\ClassUDP.h -o debug\moc_ClassUDP.cpp
@@ -814,6 +817,9 @@ debug\main.obj: ..\Server\main.cpp ..\Server\MainClass.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\QFile \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qfile.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qbasictimer.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtWidgets\QApplication \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtWidgets\qapplication.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
@@ -1076,7 +1082,10 @@ debug\ClassUDP.obj: ..\Server\source\UDP\ClassUDP.cpp ..\Server\source\UDP\Class
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtMultimedia\qaudiodeviceinfo.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\QFile \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qfile.h \
-		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qfiledevice.h
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\qbasictimer.h
 
 debug\Configuration.obj: ..\Server\source\common\Configuration.cpp ..\Server\source\common\Configuration.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\include\QtCore\QObject \

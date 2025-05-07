@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QUdpSocket>
 #include <source/common/Configuration.h>
-
+#include <QAudioOutput>
 class ClassUDP : public QObject
 {
     Q_OBJECT
