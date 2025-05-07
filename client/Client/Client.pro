@@ -20,6 +20,7 @@ SOURCES += \
     MainClass.cpp \
     main.cpp \
     source/GUI/MainForm.cpp \
+    source/TCP/ClassTCP.cpp \
     source/UDP/ClassAudioStream.cpp \
     source/UDP/ClassJSON.cpp \
     source/common/Configuration.cpp
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     MainClass.h \
     source/GUI/MainForm.h \
+    source/TCP/ClassTCP.h \
     source/UDP/ClassAudioStream.h \
     source/UDP/ClassJSON.h \
     source/common/Configuration.h

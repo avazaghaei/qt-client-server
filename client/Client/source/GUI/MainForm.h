@@ -31,6 +31,7 @@ public:
     QPushButton* btnUdpJson;
     QPushButton* btnUdpAudioStream;
     QPushButton* btnTcpPacket;
+    QPushButton* btnSendConnection;
 
     QPlainTextEdit* packetView;
 

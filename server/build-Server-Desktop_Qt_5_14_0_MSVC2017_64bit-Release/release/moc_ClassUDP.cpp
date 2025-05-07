@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ClassUDP_t {
-    QByteArrayData data[4];
-    char stringdata0[39];
+    QByteArrayData data[5];
+    char stringdata0[49];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,10 +35,12 @@ static const qt_meta_stringdata_ClassUDP_t qt_meta_stringdata_ClassUDP = {
 QT_MOC_LITERAL(0, 0, 8), // "ClassUDP"
 QT_MOC_LITERAL(1, 9, 13), // "funcReadyRead"
 QT_MOC_LITERAL(2, 23, 0), // ""
-QT_MOC_LITERAL(3, 24, 14) // "sendAudioChunk"
+QT_MOC_LITERAL(3, 24, 19), // "slotSendAudioStream"
+QT_MOC_LITERAL(4, 44, 4) // "data"
 
     },
-    "ClassUDP\0funcReadyRead\0\0sendAudioChunk"
+    "ClassUDP\0funcReadyRead\0\0slotSendAudioStream\0"
+    "data"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,11 +59,11 @@ static const uint qt_meta_data_ClassUDP[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    0,   24,    2, 0x08 /* Private */,
-       3,    0,   25,    2, 0x08 /* Private */,
+       3,    1,   25,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QByteArray,    4,
 
        0        // eod
 };
@@ -73,11 +75,10 @@ void ClassUDP::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->funcReadyRead(); break;
-        case 1: _t->sendAudioChunk(); break;
+        case 1: _t->slotSendAudioStream((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject ClassUDP::staticMetaObject = { {

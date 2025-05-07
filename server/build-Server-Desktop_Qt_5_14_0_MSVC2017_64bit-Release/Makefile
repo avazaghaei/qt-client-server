@@ -240,6 +240,7 @@ Makefile: ..\Server\Server.pro C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\win32-m
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\qt_config.prf \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\win32-msvc\qmake.conf \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\exclusive_builds.prf \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\common\msvc-version.conf \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\toolchain.prf \
@@ -271,7 +272,6 @@ Makefile: ..\Server\Server.pro C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\win32-m
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Network.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Core.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\qtmain.prl \
-		.qmake.stash \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\build_pass.prf \
 		..\Server\audio.qrc \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Multimediad.prl \
@@ -437,6 +437,7 @@ C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\qt_functions.prf:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\qt_config.prf:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\win32-msvc\qmake.conf:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\exclusive_builds.prf:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\common\msvc-version.conf:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\toolchain.prf:
@@ -468,7 +469,6 @@ C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Gui.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Network.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Core.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\qtmain.prl:
-.qmake.stash:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\build_pass.prf:
 ..\Server\audio.qrc:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Multimediad.prl:

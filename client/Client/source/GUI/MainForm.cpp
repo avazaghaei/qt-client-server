@@ -22,6 +22,7 @@ void MainForm::funcInitPushButton()
     btnUdpJson        = new QPushButton("Send JSON Signal");
     btnUdpAudioStream = new QPushButton("Send Audio Stream");
     btnTcpPacket      = new QPushButton("Send Packet");
+    btnSendConnection = new QPushButton("to connect");
 }
 
 void MainForm::funInitGroupBox()
@@ -43,6 +44,7 @@ void MainForm::setUdp()
 void MainForm::setTcp()
 {
     QVBoxLayout* vbl = new QVBoxLayout();
+    vbl->addWidget(btnSendConnection);
     vbl->addWidget(btnTcpPacket);
 
     grbTcp->setLayout(vbl);

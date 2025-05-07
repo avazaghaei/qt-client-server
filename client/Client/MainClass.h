@@ -5,6 +5,7 @@
 #include "source/GUI/MainForm.h"
 #include "source/UDP/ClassAudioStream.h"
 #include "source/UDP/ClassJSON.h"
+#include "source/TCP/ClassTCP.h"
 class MainClass : public QObject
 {
     Q_OBJECT
@@ -12,10 +13,12 @@ private:
     MainForm* ClassMainForm;
     ClassAudioStream* classAudioStream;
     ClassJSON* classJSON;
+    ClassTCP* classTCP;
 
     void funcInitClassMainForm();
     void funcInitClassAudioStream();
     void funcInitClassJSON();
+    void funcInitClassTCP();
 
     void setConnection();
 public:

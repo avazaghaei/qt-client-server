@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     MainClass.cpp \
     main.cpp \
+    source/TCP/ClassTCP.cpp \
     source/UDP/ClassAudioStream.cpp \
     source/UDP/ClassJSON.cpp \
     source/UDP/ClassUDP.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     MainClass.h \
+    source/TCP/ClassTCP.h \
     source/UDP/ClassAudioStream.h \
     source/UDP/ClassJSON.h \
     source/UDP/ClassUDP.h \
