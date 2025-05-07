@@ -2,10 +2,12 @@
 #define CLASSTCP_H
 
 #include <QObject>
+#include <source/common/Configuration.h>
+
 #include <QDebug>
 #include <QTcpSocket>
 #include <QTcpServer>
-#include <source/common/Configuration.h>
+
 class ClassTCP : public QObject
 {
     Q_OBJECT
@@ -23,18 +25,27 @@ private:
     QString strHexControl3;
     QString strHexChecksum;
 
+    QByteArray packet;
 
+private:
     void funcInitClassConfiguration();
-    void makeHeader();
-    void makePacketID();
-    void makeControl1();
-    void makeControl2();
-    void makeControl3();
-    QString addZero(int length, QString string);
-    void makeCheckSum();
-    void preparePacketToSend();
+    void funcInitTcpSocket();
 
-    void initTcpSocket();
+    void funcSetZeroCounter();
+
+    void funcMakeHeader();
+    void funcMakePacketID();
+    void funcMakeControl1();
+    void funcMakeControl2();
+    void funcMakeControl3();
+    void funcMakeCheckSum();
+
+    QString funcAddZero(int length, QString string);
+    void funcPreparePacketToSend();
+
+    void funcSendData();
+
+
 public:
     explicit ClassTCP(QObject *parent = nullptr);
 

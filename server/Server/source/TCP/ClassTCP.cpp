@@ -2,15 +2,17 @@
 
 ClassTCP::ClassTCP(QObject *parent) : QObject(parent)
 {
-    initTcpSocket();
     funcInitClassConfiguration();
-    counter = 0;
-    makeHeader();
-    makePacketID();
-    makeControl1();
-    makeControl2();
-    makeControl3();
-    makeCheckSum();
+    funcInitTcpSocket();
+
+    funcSetZeroCounter();
+
+    funcMakeHeader();
+    funcMakePacketID();
+    funcMakeControl1();
+    funcMakeControl2();
+    funcMakeControl3();
+    funcMakeCheckSum();
 }
 
 
@@ -19,55 +21,49 @@ void ClassTCP::funcInitClassConfiguration()
     classConfiguration = Configuration::getInstance();
 }
 
-void ClassTCP::initTcpSocket()
+void ClassTCP::funcInitTcpSocket()
 {
     server = new QTcpServer(this);
     connect(server, &QTcpServer::newConnection, this, &ClassTCP::slotNextPendingConnection);
 
-    server->listen(QHostAddress::Any, 1237);
-    if (!server->listen(QHostAddress::Any, 1237)) {
-        qDebug() << "Server failed to listen:" << server->errorString();
-    } else {
-        qDebug() << "Server listening on port 1237";
-    }
+    server->listen(classConfiguration->hostAddress, classConfiguration->tcpPort);
 }
 
-void ClassTCP::makeHeader()
+void ClassTCP::funcSetZeroCounter()
+{
+    counter = 0;
+}
+
+void ClassTCP::funcMakeHeader()
 {
     strHexHeader = "AA";
 }
 
-void ClassTCP::makePacketID()
+void ClassTCP::funcMakePacketID()
 {
     strHexPacketID = "CC";
 }
 
-void ClassTCP::makeControl1()
+void ClassTCP::funcMakeControl1()
 {
     QString strBinary = "1010";
     int intBinary     = strBinary.toUInt(nullptr, 2);
     strHexControl1    = QString::number(intBinary, 16);
-    strHexControl1    = addZero(2, strHexControl1);
+    strHexControl1    = funcAddZero(2, strHexControl1);
 }
 
-void ClassTCP::makeControl2()
+void ClassTCP::funcMakeControl2()
 {
-//    QString strBinary = QString::number(counter);
-//    int intBinary     = strBinary.toUInt(nullptr, 2);
-//    strHexControl2    = QString::number(intBinary, 16);
-//    strHexControl2    = addZero(2, strHexControl2);
-
     strHexControl2 = QString::number(counter, 16).toUpper();
-    strHexControl2 = addZero(2, strHexControl2);
-
+    strHexControl2 = funcAddZero(2, strHexControl2);
 }
 
-void ClassTCP::makeControl3()
+void ClassTCP::funcMakeControl3()
 {
     strHexControl3 = "Hello";
 }
 
-QString ClassTCP::addZero(int length, QString string)
+QString ClassTCP::funcAddZero(int length, QString string)
 {
     while (string.length() < length)
     {
@@ -76,7 +72,7 @@ QString ClassTCP::addZero(int length, QString string)
     return string;
 }
 
-void ClassTCP::makeCheckSum()
+void ClassTCP::funcMakeCheckSum()
 {
     uint32_t uInt32CheckSum = 0;
     uInt32CheckSum += strHexHeader   .toInt(nullptr, 16);
@@ -88,38 +84,47 @@ void ClassTCP::makeCheckSum()
     uint8_t uInt8 = uInt32CheckSum;
 
     strHexChecksum   = QString::number(uInt8, 16);
-    strHexChecksum   = addZero(2, strHexChecksum);
+    strHexChecksum   = funcAddZero(2, strHexChecksum);
 }
 
-void ClassTCP::preparePacketToSend()
+void ClassTCP::funcPreparePacketToSend()
 {
-    makeControl2();
-//    makeCheckSum();
-    QByteArray packet = (
-                strHexHeader   + strHexPacketID +
-                strHexControl1 + strHexControl2 +
-                strHexChecksum +
-                strHexControl3
-                ).toLatin1();
-    socket->write(packet);
-    counter++;
+
+    packet = (
+            strHexHeader   + strHexPacketID +
+            strHexControl1 + strHexControl2 +
+            strHexChecksum +
+            strHexControl3
+            ).toLatin1();
+
 }
 
+
+void ClassTCP::funcSendData()
+{
+    {
+        //increase the value
+        counter++;
+        funcMakeControl2();
+    }
+    //update checksum
+    funcPreparePacketToSend();
+
+    socket->write(packet);
+}
 
 void ClassTCP::slotReadyRead()
 {
     QByteArray ba;
     ba = socket->readAll();
-    qDebug()<< ba;
-    preparePacketToSend();
+
+    funcSendData();
 }
 
 void ClassTCP::slotNextPendingConnection()
 {
     socket = server->nextPendingConnection();
-    qDebug() << "New client connected.";
 
     connect(socket, &QTcpSocket::readyRead, this, &ClassTCP::slotReadyRead);
-
 }
 

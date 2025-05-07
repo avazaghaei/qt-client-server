@@ -14,14 +14,17 @@ private:
     QFile audioFile;
     QTimer* timerSendChunk;
 
+private:
     void funcReadAudioFile();
-    void initTimer();
+    void funcInitTimer();
+
 public:
     void funcStartTimer();
     explicit ClassAudioStream(QObject *parent = nullptr);
 
 signals:
     void sigSendAudioStream(QByteArray data);
+
 private slots:
     void slotReadyAudioStreamToSend();
 

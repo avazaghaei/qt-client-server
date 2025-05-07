@@ -49,10 +49,12 @@ void ClassUDP::funcReadyRead()
 
     if(state == classConfiguration->stateUdpData)
     {
+        //upda data
         funcSendCommand(classJson->funcReadByteArray());
     }
     else if(state == classConfiguration->stateUdpStream)
     {
+        //upda audio stream
         classAudioStream->funcStartTimer();
     }
 }

@@ -1,13 +1,11 @@
 #include "ClassAudioStream.h"
 
-
-
 ClassAudioStream::ClassAudioStream(QObject *parent) : QObject(parent)
 {
-    initTimer();
+    funcInitTimer();
 }
 
-void ClassAudioStream::initTimer()
+void ClassAudioStream::funcInitTimer()
 {
     timerSendChunk = new QTimer(this);
     connect(timerSendChunk, &QTimer::timeout, this, &ClassAudioStream::slotReadyAudioStreamToSend);
@@ -33,7 +31,6 @@ void ClassAudioStream::slotReadyAudioStreamToSend()
         sigSendAudioStream(chunk);
     else
     {
-        qDebug() << "Audio streaming finished.";
         audioFile.close();
         timerSendChunk->stop();  // End of file
     }

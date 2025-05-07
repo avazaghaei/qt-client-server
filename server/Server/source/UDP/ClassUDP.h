@@ -4,9 +4,10 @@
 #include <QObject>
 #include "ClassJSON.h"
 
-#include <QUdpSocket>
+
 #include <source/common/Configuration.h>
 #include <source/UDP/ClassAudioStream.h>
+#include <QUdpSocket>
 #include <QAudioInput>
 #include <QFile>
 #include <QTimer>
@@ -15,11 +16,13 @@ class ClassUDP : public QObject
     Q_OBJECT
 
 private:
-    QUdpSocket* udpSocket;
     Configuration* classConfiguration;
-    ClassJSON* classJson;
     ClassAudioStream* classAudioStream;
+    ClassJSON* classJson;
 
+    QUdpSocket* udpSocket;
+
+private:
     void funcInitClassJson();
     void funcInitClassConfiguration();
     void funcInitClassAudioStream();

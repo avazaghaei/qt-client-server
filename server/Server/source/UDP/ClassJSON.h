@@ -13,9 +13,11 @@ private:
 
     QByteArray byteArrayMessage;
 
+private:
+    void funcInitJson();
+    void funcGenerateRandomNumber();
+    void funcConverObjectToDocument();
 
-    void makeJsonObject();
-    void converObjectToDocument();
 public:
     explicit ClassJSON(QObject *parent = nullptr);
     QByteArray funcReadByteArray();
