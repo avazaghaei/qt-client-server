@@ -6,6 +6,7 @@
 
 #include <QUdpSocket>
 #include <source/common/Configuration.h>
+#include <source/UDP/ClassAudioStream.h>
 #include <QAudioInput>
 #include <QFile>
 #include <QTimer>
@@ -17,10 +18,13 @@ private:
     QUdpSocket* udpSocket;
     Configuration* classConfiguration;
     ClassJSON* classJson;
+    ClassAudioStream* classAudioStream;
 
     void funcInitClassJson();
     void funcInitClassConfiguration();
-    void funcInitUDPsocket();
+    void funcInitClassAudioStream();
+    void funcInitUdpSocket();
+
     void funcSendCommand(QByteArray data);
 
 
@@ -34,7 +38,7 @@ public:
 
 private slots:
     void funcReadyRead();
-    void sendAudioChunk();
+    void slotSendAudioStream(QByteArray data);
 };
 
 #endif // CLASSUDP_H

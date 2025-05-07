@@ -25,23 +25,24 @@ void ClassUDP::funcInitUDPsocket()
 
     // 2. Create audio output and start it
     QAudioOutput* audioOutput = new QAudioOutput(format, this);
-    QIODevice* audioDevice = audioOutput->start();
+    audioDevice = audioOutput->start();
 
     // 3. Create UDP socket
     udpSocket = new QUdpSocket(this);
     udpSocket->bind(12345);
 
     // 4. Connect to socket's readyRead signal
-    connect(udpSocket, &QUdpSocket::readyRead, this, [=]() {
-        while (udpSocket->hasPendingDatagrams()) {
-            QByteArray datagram;
-            datagram.resize(udpSocket->pendingDatagramSize());
-            udpSocket->readDatagram(datagram.data(), datagram.size());
+    connect(udpSocket, &QUdpSocket::readyRead, this, &ClassUDP::funcReadyRead);
+//    connect(udpSocket, &QUdpSocket::readyRead, this, [=]() {
+//        while (udpSocket->hasPendingDatagrams()) {
+//            QByteArray datagram;
+//            datagram.resize(udpSocket->pendingDatagramSize());
+//            udpSocket->readDatagram(datagram.data(), datagram.size());
 
-            // ✅ Write to speaker
-            audioDevice->write(datagram);
-        }
-    });
+//            // ✅ Write to speaker
+//            audioDevice->write(datagram);
+//        }
+//    });
 
 
 
@@ -62,24 +63,12 @@ void ClassUDP::funcReadyRead()
 //    udpSocket->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
 
 
-    QAudioFormat format;
-    format.setSampleRate(44100);
-    format.setChannelCount(2);
-    format.setSampleSize(16);
-    format.setCodec("audio/pcm");
-    format.setByteOrder(QAudioFormat::LittleEndian);
-    format.setSampleType(QAudioFormat::SignedInt);
-
-    // 2. Create and start audio output
-    QAudioOutput* audioOutput = new QAudioOutput(format, this);
-    QIODevice* audioDevice = audioOutput->start();
-
     while (udpSocket->hasPendingDatagrams()) {
         QByteArray datagram;
         datagram.resize(udpSocket->pendingDatagramSize());
         udpSocket->readDatagram(datagram.data(), datagram.size());
-        qDebug()<<"in";
-        // 4. Write to audio device (speaker)
+
+        // ✅ Write to speaker
         audioDevice->write(datagram);
     }
 

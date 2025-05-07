@@ -1,27 +1,43 @@
 #include "ClassAudioStream.h"
 
+
+
 ClassAudioStream::ClassAudioStream(QObject *parent) : QObject(parent)
 {
-    // Set audio format (adjust as needed)
-    format.setSampleRate(44100);
-    format.setChannelCount(1);
-    format.setSampleSize(16);
-    format.setCodec("audio/pcm");
-    format.setByteOrder(QAudioFormat::LittleEndian);
-    format.setSampleType(QAudioFormat::SignedInt);
+    funcReadAudioFile();
+    initTimer();
+}
 
-    QAudioInput audioInput(format);
-    QIODevice *inputDevice = audioInput.start();
 
-    // Buffer to read audio data
-    const int bufferSize = 1024;
-    char buffer[bufferSize];
+void ClassAudioStream::funcReadAudioFile()
+{
+    audioFile.setFileName(":/new/prefix1/source/UDP/sound.wav");
+    if (!audioFile.open(QIODevice::ReadOnly))
+        qDebug() << "Failed to open audio file.";
+}
 
-//    qint64 bytesRead = inputDevice->read(buffer, bufferSize);
-//    if (bytesRead > 0) {
-//        qint64 bytesWritten = udpSocket.writeDatagram(buffer, bytesRead, targetAddress, targetPort);
-//        if (bytesWritten == -1) {
-//            qDebug() << "Error sending data:" << udpSocket.errorString();
-//        }
-//    }
+void ClassAudioStream::initTimer()
+{
+    timerSendChunk = new QTimer(this);
+    connect(timerSendChunk, &QTimer::timeout, this, &ClassAudioStream::slotReadyAudioStreamToSend);
+}
+
+void ClassAudioStream::funcStartTimer()
+{
+    funcReadAudioFile();
+    timerSendChunk->start(2);  // Send every 20ms
+}
+
+
+void ClassAudioStream::slotReadyAudioStreamToSend()
+{
+    QByteArray chunk = audioFile.read(1024);
+    if (!chunk.isEmpty())
+        sigSendAudioStream(chunk);
+    else
+    {
+        qDebug() << "Audio streaming finished.";
+        audioFile.close();
+        timerSendChunk->stop();  // End of file
+    }
 }

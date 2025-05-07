@@ -13,6 +13,8 @@ private:
     Configuration* classConfiguration;
     QUdpSocket* udpSocket;
 
+    QIODevice* audioDevice;
+
     void funcInitClassConfiguration();
     void funcInitUDPsocket();
 public:
