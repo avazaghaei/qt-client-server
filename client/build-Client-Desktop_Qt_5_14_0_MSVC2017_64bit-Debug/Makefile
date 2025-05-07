@@ -273,6 +273,7 @@ Makefile: ..\Client\Client.pro C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\win32-m
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Core.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\qtmain.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\build_pass.prf \
+		..\Client\QSS.qrc \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Multimediad.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Widgetsd.prl \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Guid.prl \
@@ -469,6 +470,7 @@ C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Network.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Core.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\qtmain.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\mkspecs\features\build_pass.prf:
+..\Client\QSS.qrc:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Multimediad.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Widgetsd.prl:
 C:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib\Qt5Guid.prl:

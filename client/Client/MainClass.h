@@ -15,6 +15,7 @@ private:
     ClassJSON* classJSON;
     ClassTCP* classTCP;
 
+private:
     void funcInitClassMainForm();
     void funcInitClassAudioStream();
     void funcInitClassJSON();

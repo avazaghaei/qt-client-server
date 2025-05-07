@@ -23,7 +23,6 @@ void ClassJSON::funcInitUdpSocket()
     }
 }
 
-
 void ClassJSON::slotReadyRead()
 {
     QByteArray buffer;
@@ -34,7 +33,7 @@ void ClassJSON::slotReadyRead()
 
     udpSocket->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
 
-    sigShowJSON(buffer);
+    emit sigShowJSON(buffer);
 }
 
 void ClassJSON::slotSendCommandJSON()

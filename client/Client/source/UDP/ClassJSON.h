@@ -12,14 +12,15 @@ private:
     Configuration* classConfiguration;
     QUdpSocket* udpSocket;
 
+private:
     void funcInitClassConfiguration();
     void funcInitUdpSocket();
+
 public:
     explicit ClassJSON(QObject *parent = nullptr);
 
 private slots:
     void slotReadyRead();
-
 
 public slots:
     void slotSendCommandJSON();

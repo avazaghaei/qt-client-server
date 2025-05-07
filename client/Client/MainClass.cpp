@@ -7,8 +7,6 @@ MainClass::MainClass(QObject *parent) : QObject(parent)
     funcInitClassJSON();
     funcInitClassTCP();
     setConnection();
-
-
 }
 
 void MainClass::funcInitClassMainForm()
@@ -33,13 +31,27 @@ void MainClass::funcInitClassTCP()
 
 void MainClass::setConnection()
 {
-    connect(ClassMainForm->btnUdpJson, &QPushButton::clicked, classJSON, &ClassJSON::slotSendCommandJSON);
+    {
+        //send UDP command to Server
+        connect(ClassMainForm->btnUdpJson, &QPushButton::clicked, classJSON, &ClassJSON::slotSendCommandJSON);
+        connect(ClassMainForm->btnUdpAudioStream, &QPushButton::clicked, classAudioStream, &ClassAudioStream::slotSendCommandAudioStream);
+    }
+    {
+        //show JSON packet on PlainTextEdit
+        connect(classJSON, &ClassJSON::sigShowJSON, ClassMainForm, &MainForm::slotFillUdpPlainTextEdit);
+    }
+    {
+        //TCP
 
-    connect(ClassMainForm->btnUdpAudioStream, &QPushButton::clicked, classAudioStream, &ClassAudioStream::slotSendCommandAudioStream);
+        //send connection request
+        connect(ClassMainForm->btnSendConnection, &QPushButton::clicked, classTCP, &ClassTCP::slotSendConnection);
 
-    connect(classJSON, &ClassJSON::sigShowJSON, ClassMainForm, &MainForm::slotFillUdpPlainTextEdit);
+        //send TCP command to Server
+        connect(ClassMainForm->btnTcpPacket, &QPushButton::clicked, classTCP, &ClassTCP::slotSendCommand);
 
-    connect(ClassMainForm->btnSendConnection, &QPushButton::clicked, classTCP, &ClassTCP::slotSendConnection);
-    connect(ClassMainForm->btnTcpPacket, &QPushButton::clicked, classTCP, &ClassTCP::slotSendCommand);
-    connect(classTCP, &ClassTCP::sigShowPacket, ClassMainForm, &MainForm::slotFillTcpPlainTextEdit);
+        //show TCP packet on PlainTextEdit
+        connect(classTCP, &ClassTCP::sigShowPacket, ClassMainForm, &MainForm::slotFillTcpPlainTextEdit);
+    }
+
+
 }
