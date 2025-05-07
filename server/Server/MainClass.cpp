@@ -4,4 +4,3 @@
 MainClass::MainClass(QObject *parent) : QObject(parent)
 {
 }
-

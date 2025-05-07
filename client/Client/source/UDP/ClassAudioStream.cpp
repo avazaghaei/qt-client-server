@@ -44,7 +44,6 @@ void ClassAudioStream::funcInitAudioFormat()
 
 void ClassAudioStream::slotReadyRead()
 {
-
     while (udpSocket->hasPendingDatagrams()) {
         QByteArray datagram;
         datagram.resize(udpSocket->pendingDatagramSize());

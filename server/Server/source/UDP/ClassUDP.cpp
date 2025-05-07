@@ -4,8 +4,8 @@ ClassUDP::ClassUDP()
 {
     funcInitClassConfiguration();
     funcInitClassAudioStream();
-    funcInitUdpSocket();
     funcInitClassJson();
+    funcInitUdpSocket();
 }
 
 void ClassUDP::funcInitClassConfiguration()
@@ -33,7 +33,6 @@ void ClassUDP::funcInitUdpSocket()
         udpSocket->bind(QHostAddress::LocalHost, classConfiguration->UdpPortListen);
         connect(udpSocket, &QUdpSocket::readyRead, this, &ClassUDP::funcReadyRead);
     }
-
 }
 
 void ClassUDP::funcReadyRead()

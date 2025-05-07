@@ -4,16 +4,7 @@
 
 ClassAudioStream::ClassAudioStream(QObject *parent) : QObject(parent)
 {
-    funcReadAudioFile();
     initTimer();
-}
-
-
-void ClassAudioStream::funcReadAudioFile()
-{
-    audioFile.setFileName(":/new/prefix1/source/UDP/sound.wav");
-    if (!audioFile.open(QIODevice::ReadOnly))
-        qDebug() << "Failed to open audio file.";
 }
 
 void ClassAudioStream::initTimer()
@@ -28,6 +19,12 @@ void ClassAudioStream::funcStartTimer()
     timerSendChunk->start(2);  // Send every 20ms
 }
 
+void ClassAudioStream::funcReadAudioFile()
+{
+    audioFile.setFileName(":/new/prefix1/source/UDP/sound.wav");
+    if (!audioFile.open(QIODevice::ReadOnly))
+        qDebug() << "Failed to open audio file.";
+}
 
 void ClassAudioStream::slotReadyAudioStreamToSend()
 {

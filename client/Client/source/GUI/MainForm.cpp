@@ -62,5 +62,7 @@ void MainForm::setForm()
 
 void MainForm::slotFillPlainTextEdit(QString text)
 {
+    packetView->clear();
     packetView->appendPlainText(text);
+    packetView->moveCursor(QTextCursor::Start);
 }
