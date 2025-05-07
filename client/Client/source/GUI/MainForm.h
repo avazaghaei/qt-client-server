@@ -16,17 +16,15 @@ private:
     QGroupBox* grbTcp;
     QGroupBox* grbUdp;
 
-
-
-
-
-    void initPlainText();
+private:
+    void funcInitPlainText();
     void funcInitPushButton();
     void funInitGroupBox();
 
-    void setUdp();
-    void setTcp();
-    void setForm();
+    void funcSetUdp();
+    void funcSetTcp();
+    void funcSetForm();
+
 public:
     QPushButton* btnUdpJson;
     QPushButton* btnUdpAudioStream;

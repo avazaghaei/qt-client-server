@@ -49,7 +49,7 @@ void ClassAudioStream::slotReadyRead()
         datagram.resize(udpSocket->pendingDatagramSize());
         udpSocket->readDatagram(datagram.data(), datagram.size());
 
-        // ✅ Write to speaker
+        //Write to speaker
         audioDevice->write(datagram);
     }
 }

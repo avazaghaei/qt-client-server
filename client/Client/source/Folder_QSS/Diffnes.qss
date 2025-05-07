@@ -230,8 +230,8 @@ QLineEdit
 /*-----QPlainTExtEdit-----*/
 QPlainTextEdit
 {
-	background-color: #242424;
-	color : #fff;
+        background-color: #007A7A;
+        color : #fff;
 	border: 1px solid #1d1d1d;
 	padding: 3px;
 	padding-left: 5px;

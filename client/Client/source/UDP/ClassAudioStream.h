@@ -1,10 +1,11 @@
 #ifndef CLASSAUDIOSTREAM_H
 #define CLASSAUDIOSTREAM_H
 
+#include <source/common/Configuration.h>
 #include <QObject>
 #include <QAudioOutput>
 #include <QUdpSocket>
-#include <source/common/Configuration.h>
+
 class ClassAudioStream : public QObject
 {
     Q_OBJECT
@@ -13,9 +14,9 @@ private:
     Configuration* classConfiguration;
     QUdpSocket* udpSocket;
 
-
     QIODevice* audioDevice;
 
+private:
     void funcInitClassConfiguration();
     void funcInitUdpSocket();
     void funcInitAudioFormat();
