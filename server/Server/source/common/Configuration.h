@@ -13,8 +13,8 @@ public:
     explicit Configuration(QObject *parent = nullptr);
 
     int UdpPortListen          = 1234;
-    int UdpPortSendJson        = 1234;
-    int UdpPortSendAudioStream = 12345;
+    int UdpPortSendJson        = 1235;
+    int UdpPortSendAudioStream = 1236;
 
     int stateUdpData   = 1;
     int stateUdpStream = 2;

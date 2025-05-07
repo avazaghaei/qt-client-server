@@ -20,13 +20,13 @@ SOURCES += \
     MainClass.cpp \
     main.cpp \
     source/GUI/MainForm.cpp \
-    source/UDP/ClassUDP.cpp \
+    source/UDP/ClassAudioStream.cpp \
     source/common/Configuration.cpp
 
 HEADERS += \
     MainClass.h \
     source/GUI/MainForm.h \
-    source/UDP/ClassUDP.h \
+    source/UDP/ClassAudioStream.h \
     source/common/Configuration.h
 
 # Default rules for deployment.
