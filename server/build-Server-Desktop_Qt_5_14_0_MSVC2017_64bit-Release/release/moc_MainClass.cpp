@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../Server/MainClass.h"
+#include "C:/Users/MohammadReza/Downloads/Compressed/qt-client-server-master/qt-client-server-master/server/Server/MainClass.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
