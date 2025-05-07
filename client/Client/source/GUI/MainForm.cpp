@@ -13,8 +13,11 @@ MainForm::MainForm(QObject *parent) : QObject(parent)
 
 void MainForm::initPlainText()
 {
-    packetView = new QPlainTextEdit();
-    packetView->setReadOnly(true);
+    udpPacketView = new QPlainTextEdit();
+    udpPacketView->setReadOnly(true);
+
+    tcpPacketView = new QPlainTextEdit();
+    tcpPacketView->setReadOnly(true);
 }
 
 void MainForm::funcInitPushButton()
@@ -36,18 +39,19 @@ void MainForm::setUdp()
     QGridLayout* grl = new QGridLayout();
     grl->addWidget(btnUdpJson, 0, 0);
     grl->addWidget(btnUdpAudioStream, 1, 0);
-    grl->addWidget(packetView, 0, 1, 2, 2);
+    grl->addWidget(udpPacketView, 0, 1, 2, 2);
 
     grbUdp->setLayout(grl);
 }
 
 void MainForm::setTcp()
 {
-    QVBoxLayout* vbl = new QVBoxLayout();
-    vbl->addWidget(btnSendConnection);
-    vbl->addWidget(btnTcpPacket);
+    QGridLayout* grl = new QGridLayout();
+    grl->addWidget(btnSendConnection, 0, 0);
+    grl->addWidget(btnTcpPacket, 1, 0);
+    grl->addWidget(tcpPacketView, 0, 1, 2, 2);
 
-    grbTcp->setLayout(vbl);
+    grbTcp->setLayout(grl);
 }
 
 void MainForm::setForm()
@@ -62,9 +66,17 @@ void MainForm::setForm()
 }
 
 
-void MainForm::slotFillPlainTextEdit(QString text)
+void MainForm::slotFillUdpPlainTextEdit(QString text)
 {
-    packetView->clear();
-    packetView->appendPlainText(text);
-    packetView->moveCursor(QTextCursor::Start);
+    udpPacketView->clear();
+    udpPacketView->appendPlainText(text);
+    udpPacketView->moveCursor(QTextCursor::Start);
+}
+
+
+void MainForm::slotFillTcpPlainTextEdit(QString text)
+{
+    tcpPacketView->clear();
+    tcpPacketView->appendPlainText(text);
+    tcpPacketView->moveCursor(QTextCursor::Start);
 }

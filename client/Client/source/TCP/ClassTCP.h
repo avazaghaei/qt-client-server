@@ -1,4 +1,4 @@
-#ifndef CLASSTCP_H
+﻿#ifndef CLASSTCP_H
 #define CLASSTCP_H
 
 #include <QObject>
@@ -16,8 +16,6 @@ private:
 public:
     explicit ClassTCP(QObject *parent = nullptr);
 
-signals:
-
 private:
     void slotReadyRead();
 
@@ -25,6 +23,8 @@ public slots:
     void slotSendConnection();
     void slotSendCommand();
 
+signals:
+    void sigShowPacket(QString text);
 };
 
 #endif // CLASSTCP_H

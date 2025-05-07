@@ -33,14 +33,16 @@ public:
     QPushButton* btnTcpPacket;
     QPushButton* btnSendConnection;
 
-    QPlainTextEdit* packetView;
+    QPlainTextEdit* udpPacketView;
+    QPlainTextEdit* tcpPacketView;
 
     explicit MainForm(QObject *parent = nullptr);
 
 signals:
 
 public slots:
-    void slotFillPlainTextEdit(QString text);
+    void slotFillUdpPlainTextEdit(QString text);
+    void slotFillTcpPlainTextEdit(QString text);
 
 
 };
