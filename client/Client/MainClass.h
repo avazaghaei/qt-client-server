@@ -3,19 +3,19 @@
 
 #include <QObject>
 #include "source/GUI/MainForm.h"
-#include "source/UDP/ClassUDP.h"
 #include "source/UDP/ClassAudioStream.h"
+#include "source/UDP/ClassJSON.h"
 class MainClass : public QObject
 {
     Q_OBJECT
 private:
     MainForm* ClassMainForm;
-    ClassUDP* classUdp;
     ClassAudioStream* classAudioStream;
+    ClassJSON* classJSON;
 
     void funcInitClassMainForm();
-    void funcInitUdp();
     void funcInitClassAudioStream();
+    void funcInitClassJSON();
 
     void setConnection();
 public:

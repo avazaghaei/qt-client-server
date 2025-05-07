@@ -3,9 +3,10 @@
 MainClass::MainClass(QObject *parent) : QObject(parent)
 {
     funcInitClassMainForm();
-    funcInitUdp();
     funcInitClassAudioStream();
+    funcInitClassJSON();
     setConnection();
+
 }
 
 void MainClass::funcInitClassMainForm()
@@ -13,22 +14,23 @@ void MainClass::funcInitClassMainForm()
     ClassMainForm = new MainForm();
 }
 
-void MainClass::funcInitUdp()
-{
-    classUdp = new ClassUDP();
-}
-
 void MainClass::funcInitClassAudioStream()
 {
     classAudioStream = new ClassAudioStream;
 }
 
+void MainClass::funcInitClassJSON()
+{
+    classJSON = new ClassJSON();
+}
+
 void MainClass::setConnection()
 {
-    connect(ClassMainForm->btnUdpJson, &QPushButton::clicked, classUdp, &ClassUDP::slotSendCommandJson);
+    connect(ClassMainForm->btnUdpJson, &QPushButton::clicked, classJSON, &ClassJSON::slotSendCommandJSON);
+
     connect(ClassMainForm->btnUdpAudioStream, &QPushButton::clicked, classAudioStream, &ClassAudioStream::slotSendCommandAudioStream);
 
-    connect(classUdp, &ClassUDP::signalShowUdpData, ClassMainForm, &MainForm::slotFillPlainTextEdit);
+    connect(classJSON, &ClassJSON::sigShowJSON, ClassMainForm, &MainForm::slotFillPlainTextEdit);
 
 
 }

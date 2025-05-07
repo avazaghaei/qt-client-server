@@ -12,9 +12,9 @@ public:
     static Configuration* getInstance();
     explicit Configuration(QObject *parent = nullptr);
 
-    int UdpPortListen          = 1234;
-    int UdpPortSendJson        = 1235;
-    int UdpPortSendAudioStream = 1236;
+    quint16 UdpPortListen          = 1234;
+    quint16 UdpPortSendJson        = 1235;
+    quint16 UdpPortSendAudioStream = 1236;
 
     int stateUdpData   = 1;
     int stateUdpStream = 2;
